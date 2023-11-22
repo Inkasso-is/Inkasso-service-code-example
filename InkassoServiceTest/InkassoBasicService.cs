@@ -13,6 +13,15 @@ namespace InkassoServiceTest {
         public string UserName = "test.inkasso";
         public string Password = "$ILove2Code";
 
+        /// <summary>
+        /// Description: This method tests the functionality of adding a comment to a claim.
+        /// Input: BankClaimKey() {
+        ///     Account = AccountNr,
+        ///     ClaimantId = ClaimantID,
+        ///     DueDate = DueDate
+        /// }
+        /// string Comment
+        /// </summary>
         [TestMethod]
         public void AddCommentToclaim() {
 
@@ -43,6 +52,15 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: Adds a comment to a claimant.
+        /// Input: BankClaimKey() {
+        ///     Account = AccountNr,
+        ///     ClaimantId = ClaimantID,
+        ///     DueDate = DueDate
+        /// }
+        /// Input string Comment
+        /// </summary>
         [TestMethod]
         public void AddCommentToClaimant() {
 
@@ -74,6 +92,14 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: Stops collection for this claim.
+        /// Input: BankClaimKey() {
+        ///     Account = AccountNr,
+        ///     ClaimantId = ClaimantID,
+        ///     DueDate = DueDate
+        /// }
+        /// </summary>
         [TestMethod]
         public void StopCollection() {
 
@@ -104,6 +130,14 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: Starts collection for this claim.
+        /// Input: BankClaimKey() {
+        ///     Account = AccountNr,
+        ///     ClaimantId = ClaimantID,
+        ///     DueDate = DueDate
+        /// }
+        /// </summary>
         [TestMethod]
         public void StartCollection() {
 
@@ -134,6 +168,14 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: returns this claim to bank.
+        /// Input: BankClaimKey() {
+        ///     Account = AccountNr,
+        ///     ClaimantId = ClaimantID,
+        ///     DueDate = DueDate
+        /// }
+        /// </summary>
         [TestMethod]
         public void ReturnClaim() {
 
@@ -164,6 +206,25 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: Gets history information about claims.
+        /// Input: BankClaimKey() {
+        ///     Account = AccountNr,
+        ///     ClaimantId = ClaimantID,
+        ///     DueDate = DueDate
+        /// }
+        /// Output: ClaimHistoryItem[] {  
+        /// new ClaimHistoryItem
+        /// {
+        ///     Event = "Claim Created",
+        ///     Date = DateTime.Now,
+        ///     User = "John Doe"
+        /// },{
+        ///     Event = "Claim Updated",
+        ///     Date = DateTime.Now.AddDays(1),
+        ///     User = "Jane Smith"
+        ///}
+        /// </summary>
         [TestMethod]
         public void GetClaimHistory() {
 
@@ -188,12 +249,39 @@ namespace InkassoServiceTest {
                 DueDate = DueDate
             };
 
-            client.GetClaimHistory(claimKey);
+            var result = client.GetClaimHistory(claimKey);
 
-            Debug.WriteLine("Test Finished: ");
+            var builder = new StringBuilder();
+            var t = result.GetType();
+            var pi = t.GetProperties();
+
+            foreach (PropertyInfo p in pi) {
+                builder.AppendLine(p.Name + " : " + p.GetValue(result));
+            }
+            Debug.WriteLine("Test Finished: " + Environment.NewLine + builder.ToString());
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: Adds final payment to claim, sets claim status to payed.
+        /// Input: BankClaimKey() {
+        ///     Account = AccountNr,
+        ///     ClaimantId = ClaimantID,
+        ///     DueDate = DueDate
+        /// }
+        /// Decimal Amount
+        /// Decimal Split
+        /// Output: InkassoServiceAddPaymentResult[]
+        /// {
+        ///     PaymentId = 1,
+        ///     Success = true,
+        ///     Message = "Payment added successfully"
+        /// },{
+        ///     PaymentId = 2,
+        ///     Success = false,
+        ///     Message = "Failed to add payment"
+        /// }
+        /// </summary>
         [TestMethod]
         public void AddFinalPayment() {
 
@@ -218,12 +306,28 @@ namespace InkassoServiceTest {
                 DueDate = DueDate
             };
 
-            client.AddFinalPayment(claimKey,500,100);
+            var result = client.AddFinalPayment(claimKey,500,100);
 
-            Debug.WriteLine("Test Finished: ");
+            var builder = new StringBuilder();
+            var t = result.GetType();
+            var pi = t.GetProperties();
+
+            foreach (PropertyInfo p in pi) {
+                builder.AppendLine(p.Name + " : " + p.GetValue(result));
+            }
+            Debug.WriteLine("Test Finished: " + Environment.NewLine + builder.ToString());
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: Postpones claims, until set date.
+        /// Input: BankClaimKey() {
+        ///     Account = AccountNr,
+        ///     ClaimantId = ClaimantID,
+        ///     DueDate = DueDate
+        /// }
+        /// DateTime PostponeDate
+        /// </summary>
         [TestMethod]
         public void SetPostponeDate() {
 

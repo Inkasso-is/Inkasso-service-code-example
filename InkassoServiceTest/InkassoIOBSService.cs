@@ -13,6 +13,15 @@ namespace InkassoServiceTest {
         public string UserName = "test.inkasso";
         public string Password = "$ILove2Code";
 
+        /// <summary>
+        /// Description: Creates simple claim.
+        /// Input: Claim()
+        /// Output: ClaimOperationReults()  
+        /// ID : 0 // Can be used to lookup status
+        /// Status : InProgress
+        /// Success : 
+        /// Errors : 
+        /// </summary>
         [TestMethod]
         public void CreateClaimSimple() {
 
@@ -76,6 +85,16 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+
+        /// <summary>
+        /// Description: Check the status of claim/s creation.
+        /// Input: Id returned from CreateClaimSimple()
+        /// Output: ClaimOperationReults()  
+        /// ID : 0 // Can be used to lookup status
+        /// Status : InProgress
+        /// Success : 
+        /// Errors : 
+        /// </summary>
         [TestMethod]
         public void CheckStatus() {
 
@@ -103,8 +122,20 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: Query claim status and information
+        /// Input: BankClaimKey() {
+        ///     Account = AccountNr,
+        ///     ClaimantId = ClaimantID,
+        ///     DueDate = DueDate
+        /// }
+        /// Output: ClaimInfo()  
+        /// ClaimId : String
+        /// ClaimStatus : Paid, Unpaid, Cancelled, InProgress
+        /// ClaimAmount : Decimal
+        /// </summary>
         [TestMethod]
-        public void QueryClaims() {
+        public void QueryClaim() {
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
@@ -114,19 +145,6 @@ namespace InkassoServiceTest {
             client.ClientCredentials.UserName.Password = Password;
 
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(InkassoTools.ValidateServerCertificate);
-
-            //var wsKey = new IOBS_serv_LIVE.ClaimKey()
-            //{
-            //    Account = accountTxt.Text,
-            //    ClaimantID = claimantTxt.Text,
-            //    DueDate = new DateTime(2012, 9, 20)
-            //};
-
-            //var wsKey = new IOBS_serv_DEMO.ClaimKey() {
-            //    Account = accountTxt.Text,
-            //    ClaimantID = claimantTxt.Text,
-            //    DueDate = new DateTime(2012, 9, 20)
-            //};
 
             var wsKey = new IOBS_serv_DEMO.ClaimKey() {
                 Account = "090066100420",
@@ -147,6 +165,22 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: Query payments.
+        /// Input: PaymentsQuery() {
+        ///     Claimant = String ssn
+        ///     TransactionDateFrom = DateTime
+        ///     TransactionDateTo = DateTime
+        ///     EntryFromSpecified = false
+        ///     EntryToSpecified = false
+        ///     EntryFrom = 1,
+        ///     EntryTo = 50
+        /// }
+        /// Output: QueryPaymentResult[]  
+        /// PaymentId : int
+        /// Success : Bool
+        /// Message : "Payment processed successfully"  
+        /// </summary>
         [TestMethod]
         public void QueryPayments() {
 
@@ -184,6 +218,15 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Description: Creates claim with Invoice.
+        /// Input: Claim()
+        /// Output: ClaimOperationReults()  
+        /// ID : 0 // Can be used to lookup status
+        /// Status : InProgress
+        /// Success : 
+        /// Errors : 
+        /// </summary>
         [TestMethod]
         public void CreateClaimWithInvoice() {
 
