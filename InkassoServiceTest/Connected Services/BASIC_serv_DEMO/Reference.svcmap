@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="863f4d1e-3fe9-4381-aba0-8f080171c410" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="InkassoBasicService.xsd" MetadataType="Schema" ID="c39b2e30-f6c3-4748-8883-931f6b2bd692" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd1" />
+    <MetadataFile FileName="InkassoBasicService1.xsd" MetadataType="Schema" ID="ef1243fd-9895-4845-9be6-a99b724a48a7" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd3" />
+    <MetadataFile FileName="InkassoBasicService2.xsd" MetadataType="Schema" ID="392d19b1-ddbd-472d-94d3-aa37ae73938c" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd2" />
+    <MetadataFile FileName="InkassoBasicService3.xsd" MetadataType="Schema" ID="51be377c-13c7-4496-a56d-4d09749b220d" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd0" />
+    <MetadataFile FileName="InkassoBasicService4.xsd" MetadataType="Schema" ID="2b0d1df4-d7ec-43b5-990d-26e9f891ee8c" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd7" />
+    <MetadataFile FileName="InkassoBasicService.disco" MetadataType="Disco" ID="d7868f03-f3bf-4b29-aee2-32bfed69fed0" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?disco" />
+    <MetadataFile FileName="InkassoBasicService5.xsd" MetadataType="Schema" ID="adbd854a-800f-4b06-96e6-2d519d1a3c4c" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd5" />
+    <MetadataFile FileName="InkassoBasicService6.xsd" MetadataType="Schema" ID="a4106598-0919-4bbd-bb45-92a792955106" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd6" />
+    <MetadataFile FileName="InkassoBasicService7.xsd" MetadataType="Schema" ID="b198781b-86d4-4318-b920-bde06b6a62cd" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd4" />
+    <MetadataFile FileName="InkassoBasicService.wsdl" MetadataType="Wsdl" ID="5b039992-c0fc-4471-8f75-b06d0935baba" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

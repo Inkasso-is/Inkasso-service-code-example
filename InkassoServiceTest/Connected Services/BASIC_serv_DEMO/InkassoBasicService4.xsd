@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Inkasso.Admin.Web.SOAP.IOBS" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Inkasso.Admin.Web.SOAP.IOBS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ClaimInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Claim">
+        <xs:sequence>
+          <xs:element name="categoryCodeField" nillable="true" type="xs:string" />
+          <xs:element name="defaultChargeAmountField" type="xs:decimal" />
+          <xs:element name="defaultChargeAmountFieldSpecified" type="xs:boolean" />
+          <xs:element name="defaultInterestAmountField" type="xs:decimal" />
+          <xs:element name="defaultInterestAmountFieldSpecified" type="xs:boolean" />
+          <xs:element name="discountAmountField" type="xs:decimal" />
+          <xs:element name="discountAmountFieldSpecified" type="xs:boolean" />
+          <xs:element name="noticeChargeAmountField" type="xs:decimal" />
+          <xs:element name="noticeChargeAmountFieldSpecified" type="xs:boolean" />
+          <xs:element name="otherCostsAmountField" type="xs:decimal" />
+          <xs:element name="otherCostsAmountFieldSpecified" type="xs:boolean" />
+          <xs:element name="otherDefaultCostsAmountField" type="xs:decimal" />
+          <xs:element name="otherDefaultCostsAmountFieldSpecified" type="xs:boolean" />
+          <xs:element name="statusField" type="tns:ClaimStatus" />
+          <xs:element name="totalAmountDueField" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClaimInfo" nillable="true" type="tns:ClaimInfo" />
+  <xs:complexType name="Claim">
+    <xs:sequence>
+      <xs:element name="amountField" type="xs:decimal" />
+      <xs:element name="billNumberField" nillable="true" type="xs:string" />
+      <xs:element name="billPresentmentSystemField" nillable="true" type="tns:BillPresentmentSystem" />
+      <xs:element name="cancellationDateField" type="xs:dateTime" />
+      <xs:element name="currencyInformationField" nillable="true" type="tns:CurrencyInformation" />
+      <xs:element name="customerNumberField" nillable="true" type="xs:string" />
+      <xs:element name="defaultChargeField" nillable="true" type="tns:DateRestrictedCharge" />
+      <xs:element name="defaultInterestField" nillable="true" type="tns:DefaultInterest" />
+      <xs:element name="discountField" nillable="true" type="tns:DiscountCharge" />
+      <xs:element name="finalDueDateField" type="xs:dateTime" />
+      <xs:element name="identifierField" nillable="true" type="xs:string" />
+      <xs:element name="isPartialPaymentAllowedField" type="xs:boolean" />
+      <xs:element name="keyField" nillable="true" type="tns:ClaimKey" />
+      <xs:element name="noticeAndPaymentFeeField" nillable="true" type="tns:NoticeAndPaymentFee" />
+      <xs:element name="otherCostsField" type="xs:decimal" />
+      <xs:element name="otherDefaultCostsField" type="xs:decimal" />
+      <xs:element name="payorIDField" nillable="true" type="xs:string" />
+      <xs:element name="permitOutOfSequencePaymentField" type="xs:boolean" />
+      <xs:element name="printingField" nillable="true" type="tns:Printing" />
+      <xs:element name="referenceField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Claim" nillable="true" type="tns:Claim" />
+  <xs:complexType name="BillPresentmentSystem">
+    <xs:sequence>
+      <xs:element name="parametersField" nillable="true" type="xs:string" />
+      <xs:element name="typeField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BillPresentmentSystem" nillable="true" type="tns:BillPresentmentSystem" />
+  <xs:complexType name="CurrencyInformation">
+    <xs:sequence>
+      <xs:element name="currencyField" nillable="true" type="xs:string" />
+      <xs:element name="paymentRateField" type="tns:CurrencyInformationPaymentRate" />
+      <xs:element name="referenceRateField" type="tns:CurrencyInformationReferenceRate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurrencyInformation" nillable="true" type="tns:CurrencyInformation" />
+  <xs:simpleType name="CurrencyInformationPaymentRate">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DueDateRate" />
+      <xs:enumeration value="PaymentDateRate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CurrencyInformationPaymentRate" nillable="true" type="tns:CurrencyInformationPaymentRate" />
+  <xs:simpleType name="CurrencyInformationReferenceRate">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ExchangeRate" />
+      <xs:enumeration value="NoteRate" />
+      <xs:enumeration value="CentralBankMidRate" />
+      <xs:enumeration value="CentralBankStatutoryRate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CurrencyInformationReferenceRate" nillable="true" type="tns:CurrencyInformationReferenceRate" />
+  <xs:complexType name="DateRestrictedCharge">
+    <xs:sequence>
+      <xs:element name="firstField" nillable="true" type="tns:DiscountOrDefaultChargeBase" />
+      <xs:element name="referenceDateField" type="tns:ReferenceDate" />
+      <xs:element name="secondField" nillable="true" type="tns:DiscountOrDefaultChargeBase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DateRestrictedCharge" nillable="true" type="tns:DateRestrictedCharge" />
+  <xs:complexType name="DiscountOrDefaultChargeBase">
+    <xs:sequence>
+      <xs:element name="daysField" type="xs:int" />
+      <xs:element name="valueField" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DiscountOrDefaultChargeBase" nillable="true" type="tns:DiscountOrDefaultChargeBase" />
+  <xs:complexType name="DiscountOrDefaultChargeAmount">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DiscountOrDefaultChargeBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DiscountOrDefaultChargeAmount" nillable="true" type="tns:DiscountOrDefaultChargeAmount" />
+  <xs:complexType name="DiscountOrDefaultChargePercentage">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DiscountOrDefaultChargeBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DiscountOrDefaultChargePercentage" nillable="true" type="tns:DiscountOrDefaultChargePercentage" />
+  <xs:simpleType name="ReferenceDate">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DueDate" />
+      <xs:enumeration value="FinalDueDate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReferenceDate" nillable="true" type="tns:ReferenceDate" />
+  <xs:complexType name="DiscountCharge">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DateRestrictedCharge">
+        <xs:sequence>
+          <xs:element name="isPostRefDateField" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DiscountCharge" nillable="true" type="tns:DiscountCharge" />
+  <xs:complexType name="DefaultInterest">
+    <xs:sequence>
+      <xs:element name="percentage4Field" type="xs:decimal" />
+      <xs:element name="percentage4FieldSpecified" type="xs:boolean" />
+      <xs:element name="ruleField" type="tns:DefaultInterestRule" />
+      <xs:element name="specialCodeField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DefaultInterest" nillable="true" type="tns:DefaultInterest" />
+  <xs:simpleType name="DefaultInterestRule">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoDefaultInterest" />
+      <xs:enumeration value="DefaultInterestAmount" />
+      <xs:enumeration value="DefaultInterestAmountAndDefaultCharge" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DefaultInterestRule" nillable="true" type="tns:DefaultInterestRule" />
+  <xs:complexType name="ClaimKey">
+    <xs:sequence>
+      <xs:element name="accountField" nillable="true" type="xs:string" />
+      <xs:element name="claimantIDField" nillable="true" type="xs:string" />
+      <xs:element name="dueDateField" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClaimKey" nillable="true" type="tns:ClaimKey" />
+  <xs:complexType name="NoticeAndPaymentFee">
+    <xs:sequence>
+      <xs:element name="paperlessField" type="xs:decimal" />
+      <xs:element name="printingField" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NoticeAndPaymentFee" nillable="true" type="tns:NoticeAndPaymentFee" />
+  <xs:complexType name="Printing">
+    <xs:sequence>
+      <xs:element name="claimantAddressField" nillable="true" type="tns:Address" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="commentsField" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element name="itemRowsField" nillable="true" type="tns:ArrayOfItemRow" />
+      <xs:element name="payorAddressField" nillable="true" type="tns:Address" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Printing" nillable="true" type="tns:Printing" />
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element name="addressLine1Field" nillable="true" type="xs:string" />
+      <xs:element name="addressLine2Field" nillable="true" type="xs:string" />
+      <xs:element name="cityField" nillable="true" type="xs:string" />
+      <xs:element name="countryField" nillable="true" type="xs:string" />
+      <xs:element name="nameField" nillable="true" type="xs:string" />
+      <xs:element name="postCodeNumberField" nillable="true" type="xs:string" />
+      <xs:element name="regionField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Address" nillable="true" type="tns:Address" />
+  <xs:complexType name="ArrayOfItemRow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ItemRow" nillable="true" type="tns:ItemRow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItemRow" nillable="true" type="tns:ArrayOfItemRow" />
+  <xs:complexType name="ItemRow">
+    <xs:sequence>
+      <xs:element name="amountField" type="xs:decimal" />
+      <xs:element name="textField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ItemRow" nillable="true" type="tns:ItemRow" />
+  <xs:simpleType name="ClaimStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unpaid" />
+      <xs:enumeration value="Paid" />
+      <xs:enumeration value="Cancelled" />
+      <xs:enumeration value="SecondaryCollection" />
+      <xs:enumeration value="LegalCollection" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ClaimStatus" nillable="true" type="tns:ClaimStatus" />
+</xs:schema>

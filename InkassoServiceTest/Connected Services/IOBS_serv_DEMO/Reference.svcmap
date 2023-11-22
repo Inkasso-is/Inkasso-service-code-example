@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="39198d22-d652-4d48-ad4a-5cfb00ed322a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="IcelandicOnlineBankingClaimsSoap.wsdl" MetadataType="Wsdl" ID="9aed0f20-68e0-4295-98c9-fd85d0f1df8b" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?wsdl" />
+    <MetadataFile FileName="IcelandicOnlineBankingClaimsSoap.xsd" MetadataType="Schema" ID="edf12b75-8d3a-441d-8383-3b853c21c759" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?xsd=xsd2" />
+    <MetadataFile FileName="IcelandicOnlineBankingClaimsSoap1.wsdl" MetadataType="Wsdl" ID="4804690d-ab0f-44fb-9218-2c3ce5976d6d" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="IcelandicOnlineBankingClaimsSoap1.xsd" MetadataType="Schema" ID="609fa517-64fd-4245-b2da-f4cb3f01902f" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?xsd=xsd0" />
+    <MetadataFile FileName="IcelandicOnlineBankingClaimsSoap2.xsd" MetadataType="Schema" ID="8fccb47e-eb67-4110-854c-e20637b4b5b2" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?xsd=xsd1" />
+    <MetadataFile FileName="IcelandicOnlineBankingClaimsSoap.disco" MetadataType="Disco" ID="7d60a02a-a7fe-429b-ab4f-b1a7cf4d4833" SourceId="1" SourceUrl="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

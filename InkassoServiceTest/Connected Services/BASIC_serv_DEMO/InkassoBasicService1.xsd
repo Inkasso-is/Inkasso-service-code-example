@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.Enums" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.Enums" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="PaymentPlanStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="InActive" />
+      <xs:enumeration value="Paid" />
+      <xs:enumeration value="CancelPending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PaymentPlanStatus" nillable="true" type="tns:PaymentPlanStatus" />
+</xs:schema>

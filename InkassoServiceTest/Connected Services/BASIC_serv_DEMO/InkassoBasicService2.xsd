@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.Enums" />
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" />
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" />
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="QueryPaymentPlanRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClaimantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateTo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EntryFrom" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="EntryTo" nillable="true" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.Enums" minOccurs="0" name="Status" nillable="true" type="q1:PaymentPlanStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueryPaymentPlanRequest" nillable="true" type="tns:QueryPaymentPlanRequest" />
+  <xs:complexType name="PaymentPlanRequestResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaymentPlans" nillable="true" type="tns:ArrayOfPaymentPlanWS" />
+      <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentPlanRequestResult" nillable="true" type="tns:PaymentPlanRequestResult" />
+  <xs:complexType name="ArrayOfPaymentPlanWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentPlanWS" nillable="true" type="tns:PaymentPlanWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaymentPlanWS" nillable="true" type="tns:ArrayOfPaymentPlanWS" />
+  <xs:complexType name="PaymentPlanWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Canceled" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Claims" nillable="true" type="tns:ArrayOfPlanClaimWS" />
+      <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Installments" nillable="true" type="tns:ArrayOfInstallmentWS" />
+      <xs:element minOccurs="0" name="Payments" nillable="true" type="tns:ArrayOfPaymentWS" />
+      <xs:element minOccurs="0" name="PayorId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.Enums" minOccurs="0" name="Status" type="q2:PaymentPlanStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentPlanWS" nillable="true" type="tns:PaymentPlanWS" />
+  <xs:complexType name="ArrayOfPlanClaimWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlanClaimWS" nillable="true" type="tns:PlanClaimWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlanClaimWS" nillable="true" type="tns:ArrayOfPlanClaimWS" />
+  <xs:complexType name="PlanClaimWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Account" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DueDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FinalDueDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Status" type="q3:ClaimStatus" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanClaimWS" nillable="true" type="tns:PlanClaimWS" />
+  <xs:complexType name="ArrayOfInstallmentWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InstallmentWS" nillable="true" type="tns:InstallmentWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInstallmentWS" nillable="true" type="tns:ArrayOfInstallmentWS" />
+  <xs:complexType name="InstallmentWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="SendBill" type="xs:boolean" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Status" type="q4:PaymentPlanItemStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InstallmentWS" nillable="true" type="tns:InstallmentWS" />
+  <xs:complexType name="ArrayOfPaymentWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentWS" nillable="true" type="tns:PaymentWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaymentWS" nillable="true" type="tns:ArrayOfPaymentWS" />
+  <xs:complexType name="PaymentWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CapitalInterestTax" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="InstallmentId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PaidAmount" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TransactionDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentWS" nillable="true" type="tns:PaymentWS" />
+  <xs:complexType name="InkassoServiceAddPaymentResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:InkassoServiceGeneralResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Errors" nillable="true" type="tns:ArrayOfInkassoServicePaymentError" />
+          <xs:element minOccurs="0" name="Success" nillable="true" type="tns:ArrayOfInkassoServicePaymentSuccess" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InkassoServiceAddPaymentResult" nillable="true" type="tns:InkassoServiceAddPaymentResult" />
+  <xs:complexType name="InkassoServiceGeneralResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Status" type="q5:OperationStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServiceGeneralResult" nillable="true" type="tns:InkassoServiceGeneralResult" />
+  <xs:complexType name="ArrayOfInkassoServicePaymentError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoServicePaymentError" nillable="true" type="tns:InkassoServicePaymentError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoServicePaymentError" nillable="true" type="tns:ArrayOfInkassoServicePaymentError" />
+  <xs:complexType name="InkassoServicePaymentError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="ErrorCode" nillable="true" type="q6:InkassoServiceErrorCode" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Key" nillable="true" type="q7:BankClaimKey" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" minOccurs="0" name="RequiredPaymentAmountHigh" nillable="true" type="q8:Amount" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" minOccurs="0" name="RequiredPaymentAmountLow" nillable="true" type="q9:Amount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServicePaymentError" nillable="true" type="tns:InkassoServicePaymentError" />
+  <xs:complexType name="ArrayOfInkassoServicePaymentSuccess">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoServicePaymentSuccess" nillable="true" type="tns:InkassoServicePaymentSuccess" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoServicePaymentSuccess" nillable="true" type="tns:ArrayOfInkassoServicePaymentSuccess" />
+  <xs:complexType name="InkassoServicePaymentSuccess">
+    <xs:sequence>
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" minOccurs="0" name="CapitalGainsTaxToBePaid" type="q10:Amount" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Key" nillable="true" type="q11:BankClaimKey" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="RepaidAmounts" nillable="true" type="q12:PaymentAmountData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServicePaymentSuccess" nillable="true" type="tns:InkassoServicePaymentSuccess" />
+  <xs:complexType name="ArrayOfClaimOwnershipRequestRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClaimOwnershipRequestRecord" nillable="true" type="tns:ClaimOwnershipRequestRecord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClaimOwnershipRequestRecord" nillable="true" type="tns:ArrayOfClaimOwnershipRequestRecord" />
+  <xs:complexType name="ClaimOwnershipRequestRecord">
+    <xs:sequence>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="BankClaimKey" nillable="true" type="q13:BankClaimKey" />
+      <xs:element minOccurs="0" name="ForcePrimaryCollectionImport" type="xs:boolean" />
+      <xs:element minOccurs="0" name="WaitForImport" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClaimOwnershipRequestRecord" nillable="true" type="tns:ClaimOwnershipRequestRecord" />
+  <xs:complexType name="InkassoServiceClaimOwnershipResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:InkassoServiceGeneralResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Errors" nillable="true" type="tns:ArrayOfInkassoServiceError" />
+          <xs:element minOccurs="0" name="Success" nillable="true" type="tns:ArrayOfInkassoServiceClaimOwnershipSuccess" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InkassoServiceClaimOwnershipResult" nillable="true" type="tns:InkassoServiceClaimOwnershipResult" />
+  <xs:complexType name="ArrayOfInkassoServiceError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoServiceError" nillable="true" type="tns:InkassoServiceError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoServiceError" nillable="true" type="tns:ArrayOfInkassoServiceError" />
+  <xs:complexType name="InkassoServiceError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClaimId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="ErrorCode" nillable="true" type="q14:InkassoServiceErrorCode" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Key" nillable="true" type="q15:BankClaimKey" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServiceError" nillable="true" type="tns:InkassoServiceError" />
+  <xs:complexType name="ArrayOfInkassoServiceClaimOwnershipSuccess">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoServiceClaimOwnershipSuccess" nillable="true" type="tns:InkassoServiceClaimOwnershipSuccess" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoServiceClaimOwnershipSuccess" nillable="true" type="tns:ArrayOfInkassoServiceClaimOwnershipSuccess" />
+  <xs:complexType name="InkassoServiceClaimOwnershipSuccess">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClaimId" nillable="true" type="xs:long" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Key" nillable="true" type="q16:BankClaimKey" />
+      <xs:element minOccurs="0" name="OwnershipUpdated" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServiceClaimOwnershipSuccess" nillable="true" type="tns:InkassoServiceClaimOwnershipSuccess" />
+  <xs:complexType name="GetFinalPaymentsRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateFrom" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateTo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EntryFrom" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="EntryTo" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetFinalPaymentsRequest" nillable="true" type="tns:GetFinalPaymentsRequest" />
+  <xs:complexType name="GetFinalPaymentsResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Payments" nillable="true" type="tns:ArrayOfFinalPaymentRecord" />
+      <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetFinalPaymentsResult" nillable="true" type="tns:GetFinalPaymentsResult" />
+  <xs:complexType name="ArrayOfFinalPaymentRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FinalPaymentRecord" nillable="true" type="tns:FinalPaymentRecord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFinalPaymentRecord" nillable="true" type="tns:ArrayOfFinalPaymentRecord" />
+  <xs:complexType name="FinalPaymentRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClaimId" type="xs:long" />
+      <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Key" nillable="true" type="q17:BankClaimKey" />
+      <xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FinalPaymentRecord" nillable="true" type="tns:FinalPaymentRecord" />
+  <xs:complexType name="SetPostponeDateRecord">
+    <xs:sequence>
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="ClaimKey" nillable="true" type="q18:BankClaimKey" />
+      <xs:element minOccurs="0" name="PostponeDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SetPostponeDateRecord" nillable="true" type="tns:SetPostponeDateRecord" />
+  <xs:complexType name="ArrayOfInkassoServiceQueryPostponeResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoServiceQueryPostponeResult" nillable="true" type="tns:InkassoServiceQueryPostponeResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoServiceQueryPostponeResult" nillable="true" type="tns:ArrayOfInkassoServiceQueryPostponeResult" />
+  <xs:complexType name="InkassoServiceQueryPostponeResult">
+    <xs:sequence>
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Key" nillable="true" type="q19:BankClaimKey" />
+      <xs:element minOccurs="0" name="PostponeDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServiceQueryPostponeResult" nillable="true" type="tns:InkassoServiceQueryPostponeResult" />
+  <xs:complexType name="ArrayOfInkassoServiceQueryClaimHistoryResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoServiceQueryClaimHistoryResult" nillable="true" type="tns:InkassoServiceQueryClaimHistoryResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoServiceQueryClaimHistoryResult" nillable="true" type="tns:ArrayOfInkassoServiceQueryClaimHistoryResult" />
+  <xs:complexType name="InkassoServiceQueryClaimHistoryResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Action" nillable="true" type="xs:string" />
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" minOccurs="0" name="Capital" type="q20:Amount" />
+      <xs:element minOccurs="0" name="CollectionConfig" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExpiryDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FinalDueDate" type="xs:dateTime" />
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" minOccurs="0" name="OtherCost" type="q21:Amount" />
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" minOccurs="0" name="OtherDefaultCost" type="q22:Amount" />
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" minOccurs="0" name="PenaltyInterest" type="q23:Amount" />
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" minOccurs="0" name="Repaid" type="q24:Amount" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" minOccurs="0" name="TotalAmount" type="q25:Amount" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServiceQueryClaimHistoryResult" nillable="true" type="tns:InkassoServiceQueryClaimHistoryResult" />
+  <xs:complexType name="InkassoServiceReturnClaimResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:InkassoServiceGeneralResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Errors" nillable="true" type="tns:ArrayOfInkassoServiceClaimError" />
+          <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Success" nillable="true" type="q26:ArrayOfBankClaimKey" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InkassoServiceReturnClaimResult" nillable="true" type="tns:InkassoServiceReturnClaimResult" />
+  <xs:complexType name="ArrayOfInkassoServiceClaimError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoServiceClaimError" nillable="true" type="tns:InkassoServiceClaimError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoServiceClaimError" nillable="true" type="tns:ArrayOfInkassoServiceClaimError" />
+  <xs:complexType name="InkassoServiceClaimError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Key" nillable="true" type="q27:BankClaimKey" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServiceClaimError" nillable="true" type="tns:InkassoServiceClaimError" />
+  <xs:complexType name="SendClaimDocumentRequest">
+    <xs:sequence>
+      <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="ClaimKey" nillable="true" type="q28:BankClaimKey" />
+      <xs:element minOccurs="0" name="FileContent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendClaimDocumentRequest" nillable="true" type="tns:SendClaimDocumentRequest" />
+  <xs:complexType name="InkassoServiceSendClaimDocumentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServiceSendClaimDocumentResponse" nillable="true" type="tns:InkassoServiceSendClaimDocumentResponse" />
+  <xs:complexType name="InkassoBasicClaim">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BillNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillPresentmentParameters" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancellationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DefaultChargeSetup" nillable="true" type="tns:InkassoBasicDefaultChargeData" />
+      <xs:element minOccurs="0" name="DefaultInterestSetup" nillable="true" type="tns:InkassoBasicDefaultInterestData" />
+      <xs:element minOccurs="0" name="FinalDueDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Identifier" nillable="true" type="xs:string" />
+      <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Key" nillable="true" type="q29:BankClaimKey" />
+      <xs:element minOccurs="0" name="NoticeChargePaperless" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NoticeChargePrinting" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OtherCosts" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OtherDefaultCosts" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PartialPaymentAllowed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PayorId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PermitOutOfSequencePayment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoBasicClaim" nillable="true" type="tns:InkassoBasicClaim" />
+  <xs:complexType name="InkassoBasicDefaultChargeData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DefaultCharge1" nillable="true" type="tns:InkassoBasicDefaultChargeItem" />
+      <xs:element minOccurs="0" name="DefaultCharge2" nillable="true" type="tns:InkassoBasicDefaultChargeItem" />
+      <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="DefaultChargeRefDate" type="q30:DefaultChargeReferenceDate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoBasicDefaultChargeData" nillable="true" type="tns:InkassoBasicDefaultChargeData" />
+  <xs:complexType name="InkassoBasicDefaultChargeItem">
+    <xs:sequence>
+      <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="ChargeType" type="q31:DefaultChargeType" />
+      <xs:element minOccurs="0" name="Delay" type="xs:int" />
+      <xs:element minOccurs="0" name="Value" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoBasicDefaultChargeItem" nillable="true" type="tns:InkassoBasicDefaultChargeItem" />
+  <xs:complexType name="InkassoBasicDefaultInterestData">
+    <xs:sequence>
+      <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="DefInterestRule" nillable="true" type="q32:DefaultInterestRule" />
+      <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="DefaultInterestBase" nillable="true" type="q33:DefaultInterestBaseType" />
+      <xs:element minOccurs="0" name="DefaultInterestPercentage" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoBasicDefaultInterestData" nillable="true" type="tns:InkassoBasicDefaultInterestData" />
+  <xs:complexType name="InkassoServiceClaimResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Errors" nillable="true" type="tns:ArrayOfInkassoServiceError" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Status" type="q34:OperationStatus" />
+      <xs:element minOccurs="0" name="Success" nillable="true" type="tns:ArrayOfInkassoServiceBankClaimModOpSuccess" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServiceClaimResult" nillable="true" type="tns:InkassoServiceClaimResult" />
+  <xs:complexType name="ArrayOfInkassoServiceBankClaimModOpSuccess">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoServiceBankClaimModOpSuccess" nillable="true" type="tns:InkassoServiceBankClaimModOpSuccess" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoServiceBankClaimModOpSuccess" nillable="true" type="tns:ArrayOfInkassoServiceBankClaimModOpSuccess" />
+  <xs:complexType name="InkassoServiceBankClaimModOpSuccess">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClaimId" nillable="true" type="xs:long" />
+      <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="Key" nillable="true" type="q35:BankClaimKey" />
+      <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="ReceivedPrintInformation" nillable="true" type="q36:BankPrintInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoServiceBankClaimModOpSuccess" nillable="true" type="tns:InkassoServiceBankClaimModOpSuccess" />
+  <xs:complexType name="ArrayOfInkassoBasicClaim">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoBasicClaim" nillable="true" type="tns:InkassoBasicClaim" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoBasicClaim" nillable="true" type="tns:ArrayOfInkassoBasicClaim" />
+  <xs:complexType name="InkassoBasicUpdateContacts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClaimantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contacts" nillable="true" type="tns:ArrayOfInkassoBasicContactDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoBasicUpdateContacts" nillable="true" type="tns:InkassoBasicUpdateContacts" />
+  <xs:complexType name="ArrayOfInkassoBasicContactDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InkassoBasicContactDetails" nillable="true" type="tns:InkassoBasicContactDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInkassoBasicContactDetails" nillable="true" type="tns:ArrayOfInkassoBasicContactDetails" />
+  <xs:complexType name="InkassoBasicContactDetails">
+    <xs:sequence>
+      <xs:element xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="EMailAddresses" nillable="true" type="q37:ArrayOfstring" />
+      <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PhoneNumbers" nillable="true" type="q38:ArrayOfstring" />
+      <xs:element minOccurs="0" name="RegistryId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InkassoBasicContactDetails" nillable="true" type="tns:InkassoBasicContactDetails" />
+</xs:schema>

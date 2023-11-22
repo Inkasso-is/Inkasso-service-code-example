@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="ClaimStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PrimaryCollection" />
+      <xs:enumeration value="Paid" />
+      <xs:enumeration value="Cancelled" />
+      <xs:enumeration value="Collection" />
+      <xs:enumeration value="LegalCollection" />
+      <xs:enumeration value="Returned" />
+      <xs:enumeration value="LegalProceedings" />
+      <xs:enumeration value="ClaimMonitoring" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ClaimStatus" nillable="true" type="tns:ClaimStatus" />
+  <xs:simpleType name="PaymentPlanItemStatus">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+        </ActualType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pending" />
+      <xs:enumeration value="Unpaid" />
+      <xs:enumeration value="Paid" />
+      <xs:enumeration value="Cancelled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PaymentPlanItemStatus" nillable="true" type="tns:PaymentPlanItemStatus" />
+  <xs:complexType name="BankClaimKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Account" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClaimantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DueDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BankClaimKey" nillable="true" type="tns:BankClaimKey" />
+  <xs:simpleType name="OperationStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="InProgress" />
+      <xs:enumeration value="Completed" />
+      <xs:enumeration value="CompletedWithErrors" />
+      <xs:enumeration value="NotConfirmed" />
+      <xs:enumeration value="Cancelled" />
+      <xs:enumeration value="OnHold" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OperationStatus" nillable="true" type="tns:OperationStatus" />
+  <xs:simpleType name="InkassoServiceErrorCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="InvalidRegistryId">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ClaimAlreadyExists">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ClaimantNotSupported">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AccessDenied">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OperationTerminated">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BankOperationFailure">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ClaimDoesNotExist">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ClaimIsNotActive">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ClaimPartiallyPaid">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PayorIdDiffers">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidInputData">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CompanyHasNoCollectionConfig">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CannotFindPayment">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ClaimCannotBePaidWithSpecifiedParameters">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">14</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PaymentAmountNotExact">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OperationNotSupported">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BankClaimWithActiveAlter">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">17</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidIdentifier">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">18</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BankClaimNotAssociatedWithClaim">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">19</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OverridingCompanyIsNotSetupCorrectly">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ClaimAmountsInconsistent">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">21</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BankClaimAmountsInconsistent">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">22</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ClaimOnPaymentPlan">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InkassoServiceErrorCode" nillable="true" type="tns:InkassoServiceErrorCode" />
+  <xs:complexType name="PaymentAmountData">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="PaymentAmountData" nillable="true" type="tns:PaymentAmountData" />
+  <xs:complexType name="ArrayOfBankClaimKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BankClaimKey" nillable="true" type="tns:BankClaimKey" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBankClaimKey" nillable="true" type="tns:ArrayOfBankClaimKey" />
+  <xs:simpleType name="DefaultChargeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Amount" />
+      <xs:enumeration value="Percentage" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DefaultChargeType" nillable="true" type="tns:DefaultChargeType" />
+  <xs:simpleType name="DefaultChargeReferenceDate">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DueDate" />
+      <xs:enumeration value="FinalDueDate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DefaultChargeReferenceDate" nillable="true" type="tns:DefaultChargeReferenceDate" />
+  <xs:simpleType name="DefaultInterestRule">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Item360360" />
+      <xs:enumeration value="RAUN360" />
+      <xs:enumeration value="RAUNRAUN" />
+      <xs:enumeration value="EITT_PROSENT_A_DAG" />
+      <xs:enumeration value="ENGIR_DRATTARVEXTIR" />
+      <xs:enumeration value="Item360360_0" />
+      <xs:enumeration value="ENGIR_DRATTARVEXTIR_1" />
+      <xs:enumeration value="Item360360_2" />
+      <xs:enumeration value="EITT_PROSENT_A_DAG_3" />
+      <xs:enumeration value="RAUN360_4" />
+      <xs:enumeration value="RAUN360_5" />
+      <xs:enumeration value="RAUN360_6" />
+      <xs:enumeration value="Item360360_7" />
+      <xs:enumeration value="Item360360_8" />
+      <xs:enumeration value="RAUN360_9" />
+      <xs:enumeration value="RAUN360_A" />
+      <xs:enumeration value="RuleB" />
+      <xs:enumeration value="RuleC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DefaultInterestRule" nillable="true" type="tns:DefaultInterestRule" />
+  <xs:simpleType name="DefaultInterestBaseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Amount" />
+      <xs:enumeration value="AmountAndCollectionCosts" />
+      <xs:enumeration value="NoDefaultInterest" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DefaultInterestBaseType" nillable="true" type="tns:DefaultInterestBaseType" />
+  <xs:simpleType name="BankPrintInformation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoInformation" />
+      <xs:enumeration value="Print" />
+      <xs:enumeration value="DirectPaymentClaim" />
+      <xs:enumeration value="InternetBankingClaim" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BankPrintInformation" nillable="true" type="tns:BankPrintInformation" />
+</xs:schema>

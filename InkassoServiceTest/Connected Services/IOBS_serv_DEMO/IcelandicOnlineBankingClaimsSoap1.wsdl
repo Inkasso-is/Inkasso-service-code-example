@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://IcelandicOnlineBanking/2005/12/01/Claims" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" targetNamespace="http://IcelandicOnlineBanking/2005/12/01/Claims" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://IcelandicOnlineBanking/2005/12/01/Claims/Imports">
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?xsd=xsd0" namespace="http://IcelandicOnlineBanking/2005/12/01/Claims" />
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?xsd=xsd1" namespace="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" />
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?xsd=xsd2" namespace="http://IcelandicOnlineBanking/2005/12/01/CommonTypes" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateClaimsRequest">
+    <wsdl:part name="parameters" element="tns:CreateClaims" />
+  </wsdl:message>
+  <wsdl:message name="CreateClaimsResponse">
+    <wsdl:part name="parameters" element="tns:CreateClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlterClaimsRequest">
+    <wsdl:part name="parameters" element="tns:AlterClaims" />
+  </wsdl:message>
+  <wsdl:message name="AlterClaimsResponse">
+    <wsdl:part name="parameters" element="tns:AlterClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelClaimsRequest">
+    <wsdl:part name="parameters" element="tns:CancelClaims" />
+  </wsdl:message>
+  <wsdl:message name="CancelClaimsResponse">
+    <wsdl:part name="parameters" element="tns:CancelClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_CreateClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateClaim" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_CreateClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_AlterClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:AlterClaim" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_AlterClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AlterClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_CancelClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelClaim" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_CancelClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_GetClaimOperationResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimOperationResult" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_GetClaimOperationResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimOperationResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_QueryClaims_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryClaims" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_QueryClaims_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_QueryClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryClaim" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_QueryClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_QueryPayments_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPayments" />
+  </wsdl:message>
+  <wsdl:message name="IIcelandicOnlineBankingClaimsSoap_QueryPayments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPaymentsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IIcelandicOnlineBankingClaimsSoap">
+    <wsdl:operation name="CreateClaims">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/CreateClaims" name="CreateClaimsRequest" message="tns:CreateClaimsRequest" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/CreateClaimsResponse" name="CreateClaimsResponse" message="tns:CreateClaimsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterClaims">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/AlterClaims" name="AlterClaimsRequest" message="tns:AlterClaimsRequest" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/AlterClaimsResponse" name="AlterClaimsResponse" message="tns:AlterClaimsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelClaims">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/CancelClaims" name="CancelClaimsRequest" message="tns:CancelClaimsRequest" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/CancelClaimsResponse" name="CancelClaimsResponse" message="tns:CancelClaimsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateClaim">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/CreateClaim" message="tns:IIcelandicOnlineBankingClaimsSoap_CreateClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/CreateClaimResponse" message="tns:IIcelandicOnlineBankingClaimsSoap_CreateClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterClaim">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/AlterClaim" message="tns:IIcelandicOnlineBankingClaimsSoap_AlterClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/AlterClaimResponse" message="tns:IIcelandicOnlineBankingClaimsSoap_AlterClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelClaim">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/CancelClaim" message="tns:IIcelandicOnlineBankingClaimsSoap_CancelClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/CancelClaimResponse" message="tns:IIcelandicOnlineBankingClaimsSoap_CancelClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimOperationResult">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/GetClaimOperationResult" message="tns:IIcelandicOnlineBankingClaimsSoap_GetClaimOperationResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/GetClaimOperationResultResponse" message="tns:IIcelandicOnlineBankingClaimsSoap_GetClaimOperationResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryClaims">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/QueryClaims" message="tns:IIcelandicOnlineBankingClaimsSoap_QueryClaims_InputMessage" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/QueryClaimsResponse" message="tns:IIcelandicOnlineBankingClaimsSoap_QueryClaims_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryClaim">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/QueryClaim" message="tns:IIcelandicOnlineBankingClaimsSoap_QueryClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/QueryClaimResponse" message="tns:IIcelandicOnlineBankingClaimsSoap_QueryClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryPayments">
+      <wsdl:input wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/QueryPayments" message="tns:IIcelandicOnlineBankingClaimsSoap_QueryPayments_InputMessage" />
+      <wsdl:output wsaw:Action="http://IcelandicOnlineBanking/2005/12/01/Claims/IIcelandicOnlineBankingClaimsSoap/QueryPaymentsResponse" message="tns:IIcelandicOnlineBankingClaimsSoap_QueryPayments_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

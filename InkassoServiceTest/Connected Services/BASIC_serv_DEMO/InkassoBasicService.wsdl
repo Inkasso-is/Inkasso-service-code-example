@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="InkassoBasicService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="IBSE_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256>
+                </sp:Basic256>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict>
+                </sp:Strict>
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp>
+            </sp:IncludeTimestamp>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:BootstrapPolicy>
+                  <wsp:Policy>
+                    <sp:SignedParts>
+                      <sp:Body>
+                      </sp:Body>
+                      <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing">
+                      </sp:Header>
+                      <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing">
+                      </sp:Header>
+                      <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing">
+                      </sp:Header>
+                      <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing">
+                      </sp:Header>
+                      <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing">
+                      </sp:Header>
+                      <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing">
+                      </sp:Header>
+                      <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing">
+                      </sp:Header>
+                    </sp:SignedParts>
+                    <sp:EncryptedParts>
+                      <sp:Body>
+                      </sp:Body>
+                    </sp:EncryptedParts>
+                    <sp:TransportBinding>
+                      <wsp:Policy>
+                        <sp:TransportToken>
+                          <wsp:Policy>
+                            <sp:HttpsToken RequireClientCertificate="false">
+                            </sp:HttpsToken>
+                          </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                          <wsp:Policy>
+                            <sp:Basic256>
+                            </sp:Basic256>
+                          </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                          <wsp:Policy>
+                            <sp:Strict>
+                            </sp:Strict>
+                          </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp>
+                        </sp:IncludeTimestamp>
+                      </wsp:Policy>
+                    </sp:TransportBinding>
+                    <sp:SignedSupportingTokens>
+                      <wsp:Policy>
+                        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                          <wsp:Policy>
+                            <sp:WssUsernameToken10>
+                            </sp:WssUsernameToken10>
+                          </wsp:Policy>
+                        </sp:UsernameToken>
+                      </wsp:Policy>
+                    </sp:SignedSupportingTokens>
+                    <sp:Wss11>
+                      <wsp:Policy>
+                      </wsp:Policy>
+                    </sp:Wss11>
+                    <sp:Trust10>
+                      <wsp:Policy>
+                        <sp:MustSupportIssuedTokens>
+                        </sp:MustSupportIssuedTokens>
+                        <sp:RequireClientEntropy>
+                        </sp:RequireClientEntropy>
+                        <sp:RequireServerEntropy>
+                        </sp:RequireServerEntropy>
+                      </wsp:Policy>
+                    </sp:Trust10>
+                  </wsp:Policy>
+                </sp:BootstrapPolicy>
+              </wsp:Policy>
+            </sp:SecureConversationToken>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+          </wsp:Policy>
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens>
+            </sp:MustSupportIssuedTokens>
+            <sp:RequireClientEntropy>
+            </sp:RequireClientEntropy>
+            <sp:RequireServerEntropy>
+            </sp:RequireServerEntropy>
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" />
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.Enums" />
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" />
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Types" />
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Admin.Web.SOAP.IOBS" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IInkassoBasicService_QueryPaymentPlans_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPaymentPlans" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_QueryPaymentPlans_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPaymentPlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPayment" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddFinalPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFinalPayment" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddFinalPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFinalPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetAddPaymentResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddPaymentResult" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetAddPaymentResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddPaymentResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_ClaimOwnershipOfClaims_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClaimOwnershipOfClaims" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_ClaimOwnershipOfClaims_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClaimOwnershipOfClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetClaimOwnershipOfClaimsResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimOwnershipOfClaimsResult" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetClaimOwnershipOfClaimsResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimOwnershipOfClaimsResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetFinalPayments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinalPayments" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetFinalPayments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinalPaymentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetPostponeDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostponeDate" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetPostponeDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostponeDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_SetPostponeDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPostponeDate" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_SetPostponeDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPostponeDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_QueryPostponeDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPostponeDate" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_QueryPostponeDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPostponeDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddCommentToClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCommentToClaim" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddCommentToClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCommentToClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddCommentToClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCommentToClient" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddCommentToClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCommentToClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetClaimHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimHistory" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetClaimHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_StopCollection_InputMessage">
+    <wsdl:part name="parameters" element="tns:StopCollection" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_StopCollection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StopCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_StartCollection_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartCollection" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_StartCollection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_ReturnClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnClaim" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_ReturnClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetReturnClaimResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReturnClaimResult" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetReturnClaimResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReturnClaimResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_SendClaimDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendClaimDocument" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_SendClaimDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendClaimDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_CreateClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateClaim" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_CreateClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_CreateClaims_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateClaims" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_CreateClaims_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetClaimOperationResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimOperationResult" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetClaimOperationResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimOperationResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_UpdateContactInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateContactInfo" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_UpdateContactInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateContactInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddPaymentByClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPaymentByClaim" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddPaymentByClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPaymentByClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddFinalPaymentByClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFinalPaymentByClaim" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_AddFinalPaymentByClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFinalPaymentByClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetPostponeDateByClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostponeDateByClaim" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_GetPostponeDateByClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostponeDateByClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_QueryClaimByClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryClaimByClaim" />
+  </wsdl:message>
+  <wsdl:message name="IInkassoBasicService_QueryClaimByClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryClaimByClaimResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IInkassoBasicService">
+    <wsdl:operation name="QueryPaymentPlans">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/QueryPaymentPlans" message="tns:IInkassoBasicService_QueryPaymentPlans_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/QueryPaymentPlansResponse" message="tns:IInkassoBasicService_QueryPaymentPlans_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/AddPayment" message="tns:IInkassoBasicService_AddPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/AddPaymentResponse" message="tns:IInkassoBasicService_AddPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFinalPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/AddFinalPayment" message="tns:IInkassoBasicService_AddFinalPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/AddFinalPaymentResponse" message="tns:IInkassoBasicService_AddFinalPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddPaymentResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/GetAddPaymentResult" message="tns:IInkassoBasicService_GetAddPaymentResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/GetAddPaymentResultResponse" message="tns:IInkassoBasicService_GetAddPaymentResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClaimOwnershipOfClaims">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/ClaimOwnershipOfClaims" message="tns:IInkassoBasicService_ClaimOwnershipOfClaims_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/ClaimOwnershipOfClaimsResponse" message="tns:IInkassoBasicService_ClaimOwnershipOfClaims_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimOwnershipOfClaimsResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/GetClaimOwnershipOfClaimsResult" message="tns:IInkassoBasicService_GetClaimOwnershipOfClaimsResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/GetClaimOwnershipOfClaimsResultResponse" message="tns:IInkassoBasicService_GetClaimOwnershipOfClaimsResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFinalPayments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/GetFinalPayments" message="tns:IInkassoBasicService_GetFinalPayments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/GetFinalPaymentsResponse" message="tns:IInkassoBasicService_GetFinalPayments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostponeDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/GetPostponeDate" message="tns:IInkassoBasicService_GetPostponeDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/GetPostponeDateResponse" message="tns:IInkassoBasicService_GetPostponeDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPostponeDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/SetPostponeDate" message="tns:IInkassoBasicService_SetPostponeDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/SetPostponeDateResponse" message="tns:IInkassoBasicService_SetPostponeDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryPostponeDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/QueryPostponeDate" message="tns:IInkassoBasicService_QueryPostponeDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/QueryPostponeDateResponse" message="tns:IInkassoBasicService_QueryPostponeDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCommentToClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/AddCommentToClaim" message="tns:IInkassoBasicService_AddCommentToClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/AddCommentToClaimResponse" message="tns:IInkassoBasicService_AddCommentToClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCommentToClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/AddCommentToClient" message="tns:IInkassoBasicService_AddCommentToClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/AddCommentToClientResponse" message="tns:IInkassoBasicService_AddCommentToClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/GetClaimHistory" message="tns:IInkassoBasicService_GetClaimHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/GetClaimHistoryResponse" message="tns:IInkassoBasicService_GetClaimHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StopCollection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/StopCollection" message="tns:IInkassoBasicService_StopCollection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/StopCollectionResponse" message="tns:IInkassoBasicService_StopCollection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartCollection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/StartCollection" message="tns:IInkassoBasicService_StartCollection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/StartCollectionResponse" message="tns:IInkassoBasicService_StartCollection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/ReturnClaim" message="tns:IInkassoBasicService_ReturnClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/ReturnClaimResponse" message="tns:IInkassoBasicService_ReturnClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReturnClaimResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/GetReturnClaimResult" message="tns:IInkassoBasicService_GetReturnClaimResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/GetReturnClaimResultResponse" message="tns:IInkassoBasicService_GetReturnClaimResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendClaimDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/SendClaimDocument" message="tns:IInkassoBasicService_SendClaimDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/SendClaimDocumentResponse" message="tns:IInkassoBasicService_SendClaimDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/CreateClaim" message="tns:IInkassoBasicService_CreateClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/CreateClaimResponse" message="tns:IInkassoBasicService_CreateClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateClaims">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/CreateClaims" message="tns:IInkassoBasicService_CreateClaims_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/CreateClaimsResponse" message="tns:IInkassoBasicService_CreateClaims_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimOperationResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/GetClaimOperationResult" message="tns:IInkassoBasicService_GetClaimOperationResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/GetClaimOperationResultResponse" message="tns:IInkassoBasicService_GetClaimOperationResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateContactInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/UpdateContactInfo" message="tns:IInkassoBasicService_UpdateContactInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/UpdateContactInfoResponse" message="tns:IInkassoBasicService_UpdateContactInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPaymentByClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/AddPaymentByClaim" message="tns:IInkassoBasicService_AddPaymentByClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/AddPaymentByClaimResponse" message="tns:IInkassoBasicService_AddPaymentByClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFinalPaymentByClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/AddFinalPaymentByClaim" message="tns:IInkassoBasicService_AddFinalPaymentByClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/AddFinalPaymentByClaimResponse" message="tns:IInkassoBasicService_AddFinalPaymentByClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostponeDateByClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/GetPostponeDateByClaim" message="tns:IInkassoBasicService_GetPostponeDateByClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/GetPostponeDateByClaimResponse" message="tns:IInkassoBasicService_GetPostponeDateByClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryClaimByClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInkassoBasicService/QueryClaimByClaim" message="tns:IInkassoBasicService_QueryClaimByClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInkassoBasicService/QueryClaimByClaimResponse" message="tns:IInkassoBasicService_QueryClaimByClaim_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IBSE" type="tns:IInkassoBasicService">
+    <wsp:PolicyReference URI="#IBSE_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryPaymentPlans">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/QueryPaymentPlans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPayment">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/AddPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFinalPayment">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/AddFinalPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddPaymentResult">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/GetAddPaymentResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClaimOwnershipOfClaims">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/ClaimOwnershipOfClaims" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimOwnershipOfClaimsResult">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/GetClaimOwnershipOfClaimsResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFinalPayments">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/GetFinalPayments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostponeDate">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/GetPostponeDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPostponeDate">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/SetPostponeDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPostponeDate">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/QueryPostponeDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCommentToClaim">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/AddCommentToClaim" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCommentToClient">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/AddCommentToClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimHistory">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/GetClaimHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopCollection">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/StopCollection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartCollection">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/StartCollection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnClaim">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/ReturnClaim" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReturnClaimResult">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/GetReturnClaimResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendClaimDocument">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/SendClaimDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateClaim">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/CreateClaim" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateClaims">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/CreateClaims" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimOperationResult">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/GetClaimOperationResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateContactInfo">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/UpdateContactInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPaymentByClaim">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/AddPaymentByClaim" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFinalPaymentByClaim">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/AddFinalPaymentByClaim" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostponeDateByClaim">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/GetPostponeDateByClaim" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryClaimByClaim">
+      <soap12:operation soapAction="http://tempuri.org/IInkassoBasicService/QueryClaimByClaim" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InkassoBasicService">
+    <wsdl:port name="IBSE" binding="tns:IBSE">
+      <soap12:address location="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

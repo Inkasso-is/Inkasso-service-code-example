@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" />
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" />
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/InkassoBasicService/InkassoBasicService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Inkasso.Admin.Web.SOAP.IOBS" />
+  <xs:element name="QueryPaymentPlans">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="request" nillable="true" type="q1:QueryPaymentPlanRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryPaymentPlansResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="QueryPaymentPlansResult" nillable="true" type="q2:PaymentPlanRequestResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPayment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="p_claimKey" nillable="true" type="q3:BankClaimKey" />
+        <xs:element minOccurs="0" name="p_amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="p_splitCoef" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="AddPaymentResult" nillable="true" type="q4:InkassoServiceAddPaymentResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFinalPayment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="p_claimKey" nillable="true" type="q5:BankClaimKey" />
+        <xs:element minOccurs="0" name="p_amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="p_splitCoef" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFinalPaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="AddFinalPaymentResult" nillable="true" type="q6:InkassoServiceAddPaymentResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAddPaymentResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_opId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAddPaymentResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="GetAddPaymentResultResult" nillable="true" type="q7:InkassoServiceAddPaymentResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClaimOwnershipOfClaims">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="p_records" nillable="true" type="q8:ArrayOfClaimOwnershipRequestRecord" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClaimOwnershipOfClaimsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="ClaimOwnershipOfClaimsResult" nillable="true" type="q9:InkassoServiceClaimOwnershipResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimOwnershipOfClaimsResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_opId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimOwnershipOfClaimsResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="GetClaimOwnershipOfClaimsResultResult" nillable="true" type="q10:InkassoServiceClaimOwnershipResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFinalPayments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="p_request" nillable="true" type="q11:GetFinalPaymentsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFinalPaymentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="GetFinalPaymentsResult" nillable="true" type="q12:GetFinalPaymentsResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostponeDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="p_claimKey" nillable="true" type="q13:BankClaimKey" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostponeDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPostponeDateResult" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetPostponeDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="request" nillable="true" type="q14:SetPostponeDateRecord" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetPostponeDateResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryPostponeDate">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryPostponeDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="QueryPostponeDateResult" nillable="true" type="q15:ArrayOfInkassoServiceQueryPostponeResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCommentToClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="claimKey" nillable="true" type="q16:BankClaimKey" />
+        <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCommentToClaimResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCommentToClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="claimantId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCommentToClientResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="claimKey" nillable="true" type="q17:BankClaimKey" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="GetClaimHistoryResult" nillable="true" type="q18:ArrayOfInkassoServiceQueryClaimHistoryResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StopCollection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="claimKey" nillable="true" type="q19:BankClaimKey" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StopCollectionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartCollection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="claimKey" nillable="true" type="q20:BankClaimKey" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartCollectionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries" minOccurs="0" name="claimKey" nillable="true" type="q21:BankClaimKey" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="ReturnClaimResult" nillable="true" type="q22:InkassoServiceReturnClaimResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReturnClaimResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="opId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReturnClaimResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="GetReturnClaimResultResult" nillable="true" type="q23:InkassoServiceReturnClaimResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendClaimDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="request" nillable="true" type="q24:SendClaimDocumentRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendClaimDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="SendClaimDocumentResult" nillable="true" type="q25:InkassoServiceSendClaimDocumentResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="claim" nillable="true" type="q26:InkassoBasicClaim" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="CreateClaimResult" nillable="true" type="q27:InkassoServiceClaimResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateClaims">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="claims" nillable="true" type="q28:ArrayOfInkassoBasicClaim" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateClaimsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="CreateClaimsResult" nillable="true" type="q29:InkassoServiceClaimResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimOperationResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="opId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimOperationResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="GetClaimOperationResultResult" nillable="true" type="q30:InkassoServiceClaimResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateContactInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="request" nillable="true" type="q31:InkassoBasicUpdateContacts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateContactInfoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPaymentByClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="claimId" type="xs:long" />
+        <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="splitCoef" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPaymentByClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="AddPaymentByClaimResult" nillable="true" type="q32:InkassoServiceAddPaymentResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFinalPaymentByClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="claimId" type="xs:long" />
+        <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="splitCoef" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFinalPaymentByClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Inkasso.Core.Data.Entries.WS" minOccurs="0" name="AddFinalPaymentByClaimResult" nillable="true" type="q33:InkassoServiceAddPaymentResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostponeDateByClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="claimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostponeDateByClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPostponeDateByClaimResult" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryClaimByClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="claimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryClaimByClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Inkasso.Admin.Web.SOAP.IOBS" minOccurs="0" name="QueryClaimByClaimResult" nillable="true" type="q34:ClaimInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://IcelandicOnlineBanking/2005/12/01/Claims" elementFormDefault="qualified" targetNamespace="http://IcelandicOnlineBanking/2005/12/01/Claims" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?xsd=xsd1" namespace="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" />
+  <xs:element name="CreateClaims">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="claims" type="q1:ArrayOfClaim" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateClaimsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="CreateClaimsResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlterClaims">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="claims" type="q2:ArrayOfClaim" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlterClaimsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="AlterClaimsResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelClaims">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="keys" type="q3:ArrayOfClaimKey" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelClaimsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="CancelClaimsResult" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="claim" type="q4:Claim" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="CreateClaimResult" type="q5:ClaimOperationResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlterClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="claim" type="q6:Claim" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlterClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="AlterClaimResult" type="q7:ClaimOperationResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="key" type="q8:ClaimKey" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="CancelClaimResult" type="q9:ClaimOperationResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimOperationResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimOperationResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="GetClaimOperationResultResult" type="q10:ClaimOperationResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryClaims">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="query" type="q11:ClaimsQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryClaimsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="QueryClaimsResult" type="q12:QueryClaimsResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="key" type="q13:ClaimKey" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="QueryClaimResult" type="q14:ClaimInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryPayments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="query" type="q15:PaymentsQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryPaymentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" minOccurs="0" maxOccurs="1" name="QueryPaymentsResult" type="q16:QueryPaymentsResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
