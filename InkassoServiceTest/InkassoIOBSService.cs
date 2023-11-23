@@ -281,7 +281,7 @@ namespace InkassoServiceTest {
                 "<cac:PartyIdentification>" +
                 $"<cbc:ID schemeID=\"IS:KT\" schemeAgencyID=\"ZZZ\">{ClaimantID}</cbc:ID>" +
                 "</cac:PartyIdentification>" +
-                "<cac:PartyName><cbc:Name>Kópavogsbær</cbc:Name>" +
+                "<cac:PartyName><cbc:Name>Inkasso</cbc:Name>" +
                 "</cac:PartyName><cac:PostalAddress>" +
                 $"<cbc:ID schemeID=\"IS:KT\" schemeAgencyID=\"ZZZ\">{ClaimantID}</cbc:ID>" +
                 "<cbc:AddressFormatCode listID=\"Address Format\" listAgencyID=\"NES\">StructuredLax</cbc:AddressFormatCode>" +
