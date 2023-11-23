@@ -1,4 +1,4 @@
-# Inkasso-service-code-example
+# Inkasso service code examples
 
 
 ## Documentation for Inkasso IOBS services
