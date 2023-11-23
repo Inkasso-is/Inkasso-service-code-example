@@ -2,8 +2,8 @@
 
 
 ## Documentation for Inkasso IOBS services
-- [InkassoIOBSService.md](https://github.com/Inkasso-is/Inkasso-service-code-example/wiki/Inkasso-IOBS-Service)
-- [InkassoBasicService.md](https://github.com/Inkasso-is/Inkasso-service-code-example/wiki/Inkasso-BASIC-Service)
+- [Inkasso IOBS Service documentation](https://github.com/Inkasso-is/Inkasso-service-code-example/wiki/Inkasso-IOBS-Service)
+- [Inkasso Basic Service documentation](https://github.com/Inkasso-is/Inkasso-service-code-example/wiki/Inkasso-BASIC-Service)
 
 ## Demo user for system 
 
