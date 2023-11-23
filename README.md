@@ -2,8 +2,8 @@
 
 
 ## Documentation for Inkasso IOBS services
-- [InkassoIOBSService.md](https://github.com/Inkasso-is/Inkasso-service-code-example/blob/master/InkassoIOBSService.md)
-- [InkassoBasicService.md](https://github.com/Inkasso-is/Inkasso-service-code-example/blob/master/InkassoBasicService.md)
+- [Inkasso IOBS Service documentation](https://github.com/Inkasso-is/Inkasso-service-code-example/wiki/Inkasso-IOBS-Service)
+- [Inkasso Basic Service documentation](https://github.com/Inkasso-is/Inkasso-service-code-example/wiki/Inkasso-BASIC-Service)
 
 ## Demo user for system 
 
@@ -14,8 +14,8 @@ https://demo-inkasso.azurewebsites.net/Account/LogOn
 ## Code example
 
 ### IOBS
-- [Create claim simple](https://github.com/Inkasso-is/Inkasso-service-code-example/blob/master/InkassoServiceTest/InkassoIOBSService.cs#L17)
-- [Check claim status](https://github.com/Inkasso-is/Inkasso-service-code-example/blob/master/InkassoServiceTest/InkassoIOBSService.cs#L80)
+- https://github.com/Inkasso-is/Inkasso-service-code-example/blob/b5938362457f90542411d609c7e5b9028269f1d4/InkassoServiceTest/InkassoIOBSService.cs#L16-L26
+- https://github.com/Inkasso-is/Inkasso-service-code-example/blob/b5938362457f90542411d609c7e5b9028269f1d4/InkassoServiceTest/InkassoIOBSService.cs#L125-L138
 - [Query claims](https://github.com/Inkasso-is/Inkasso-service-code-example/blob/master/InkassoServiceTest/InkassoIOBSService.cs#L107)
 - [Query payments](https://github.com/Inkasso-is/Inkasso-service-code-example/blob/master/InkassoServiceTest/InkassoIOBSService.cs#L151)
 

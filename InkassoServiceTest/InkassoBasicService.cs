@@ -7,12 +7,24 @@ using System.Text;
 using System.Diagnostics;
 
 namespace InkassoServiceTest {
+
+    /// <summary>
+    /// Test class for the InkassoIBasicService.
+    /// </summary>
+    /// 
     [TestClass]
     public class InkassoBasicService {
 
         public string UserName = "test.inkasso";
         public string Password = "$ILove2Code";
 
+        /// <summary>
+        /// Tests the functionality of adding a comment to a claim.
+        /// </summary>
+        /// <param name="claimKey">
+        /// The key to identify the claim, including Account, ClaimantId, and DueDate.
+        /// </param>
+        /// <param name="comment">The comment to be added to the claim.</param>        
         [TestMethod]
         public void AddCommentToclaim() {
 
@@ -43,10 +55,15 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Adds a comment to a claimant.
+        /// </summary>
+        /// <param name="claimantID">The unique identifier for the claimant.</param>
+        /// <param name="clientId">The unique identifier for the client.</param>
+        /// <param name="comment">The comment to be added to the claimant.</param> 
         [TestMethod]
         public void AddCommentToClaimant() {
 
-            string Account = "090066000001";
             string ClaimantID = "0101307789";
             string ClientId= "0101305069";
             DateTime DueDate = new DateTime(2023, 11, 7);
@@ -61,12 +78,6 @@ namespace InkassoServiceTest {
 
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(InkassoTools.ValidateServerCertificate);
 
-            var claimKey = new BASIC_serv_DEMO.BankClaimKey() {
-
-                Account = Account,
-                ClaimantId = ClaimantID,
-                DueDate = DueDate
-            };
 
             client.AddCommentToClient(ClaimantID, ClientId, "Test comment");
 
@@ -74,6 +85,14 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Stops collection for a specific claim.
+        /// </summary>
+        /// <param name="claimKey">The key identifying the claim, including:
+        /// - Account: The account number (AccountNr)
+        /// - ClaimantId: The claimant's ID (ClaimantID)
+        /// - DueDate: The due date of the claim (DueDate)
+        /// </param>
         [TestMethod]
         public void StopCollection() {
 
@@ -104,6 +123,14 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Starts collection for a specific claim.
+        /// </summary>
+        /// <param name="claimKey">The key identifying the claim, including:
+        /// - Account: The account number (AccountNr)
+        /// - ClaimantId: The claimant's ID (ClaimantID)
+        /// - DueDate: The due date of the claim (DueDate)
+        /// </param>
         [TestMethod]
         public void StartCollection() {
 
@@ -134,6 +161,14 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Returns the specified claim to the bank.
+        /// </summary>
+        /// <param name="claimKey">The key identifying the claim, including:
+        /// - Account: The account number (AccountNr)
+        /// - ClaimantId: The claimant's ID (ClaimantID)
+        /// - DueDate: The due date of the claim (DueDate)
+        /// </param>
         [TestMethod]
         public void ReturnClaim() {
 
@@ -164,6 +199,20 @@ namespace InkassoServiceTest {
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Gets history information about claims.
+        /// </summary>
+        /// <param name="claimKey">The key identifying the claim, including:
+        /// - Account: The account number (AccountNr)
+        /// - ClaimantId: The claimant's ID (ClaimantID)
+        /// - DueDate: The due date of the claim (DueDate)
+        /// </param>
+        /// <returns>
+        /// An array of <see cref="ClaimHistoryItem"/> containing history events, including:
+        /// - Event: A string describing the event (e.g., "Claim Created", "Claim Updated")
+        /// - Date: The date and time of the event (DateTime)
+        /// - User: The user associated with the event (string)
+        /// </returns>
         [TestMethod]
         public void GetClaimHistory() {
 
@@ -188,12 +237,35 @@ namespace InkassoServiceTest {
                 DueDate = DueDate
             };
 
-            client.GetClaimHistory(claimKey);
+            var result = client.GetClaimHistory(claimKey);
 
-            Debug.WriteLine("Test Finished: ");
+            var builder = new StringBuilder();
+            var t = result.GetType();
+            var pi = t.GetProperties();
+
+            foreach (PropertyInfo p in pi) {
+                builder.AppendLine(p.Name + " : " + p.GetValue(result));
+            }
+            Debug.WriteLine("Test Finished: " + Environment.NewLine + builder.ToString());
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Adds final payment to claim, sets claim status to paid.
+        /// </summary>
+        /// <param name="claimKey">The key identifying the claim, including:
+        /// - Account: The account number (AccountNr)
+        /// - ClaimantId: The claimant's ID (ClaimantID)
+        /// - DueDate: The due date of the claim (DueDate)
+        /// </param>
+        /// <param name="amount">The amount of the final payment (Decimal)</param>
+        /// <param name="split">The split amount (Decimal)</param>
+        /// <returns>
+        /// An array of <see cref="InkassoServiceAddPaymentResult"/> containing payment results, including:
+        /// - PaymentId: The ID of the payment (int)
+        /// - Success: A boolean indicating if the payment was successful (bool)
+        /// - Message: A message describing the result of the payment (string)
+        /// </returns>
         [TestMethod]
         public void AddFinalPayment() {
 
@@ -218,12 +290,28 @@ namespace InkassoServiceTest {
                 DueDate = DueDate
             };
 
-            client.AddFinalPayment(claimKey,500,100);
+            var result = client.AddFinalPayment(claimKey,500,100);
 
-            Debug.WriteLine("Test Finished: ");
+            var builder = new StringBuilder();
+            var t = result.GetType();
+            var pi = t.GetProperties();
+
+            foreach (PropertyInfo p in pi) {
+                builder.AppendLine(p.Name + " : " + p.GetValue(result));
+            }
+            Debug.WriteLine("Test Finished: " + Environment.NewLine + builder.ToString());
             Debugger.Break();
         }
 
+        /// <summary>
+        /// Postpones claims until a set date.
+        /// </summary>
+        /// <param name="claimKey">The key identifying the claim, including:
+        /// - Account: The account number (AccountNr)
+        /// - ClaimantId: The claimant's ID (ClaimantID)
+        /// - DueDate: The current due date of the claim (DueDate)
+        /// </param>
+        /// <param name="postponeDate">The new due date to which the claim is postponed (DateTime)</param>
         [TestMethod]
         public void SetPostponeDate() {
 
