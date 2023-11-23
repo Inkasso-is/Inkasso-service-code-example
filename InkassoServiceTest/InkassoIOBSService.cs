@@ -7,6 +7,10 @@ using System.Text;
 using System.Diagnostics;
 
 namespace InkassoServiceTest {
+
+    /// <summary>
+    /// Test class for the InkassoIOBSService.
+    /// </summary>
     [TestClass]
     public class InkassoIOBSService {
 
@@ -14,14 +18,15 @@ namespace InkassoServiceTest {
         public string Password = "$ILove2Code";
 
         /// <summary>
-        /// Description: Creates simple claim.
-        /// Input: Claim()
-        /// Output: ClaimOperationReults()  
-        /// ID : 0 // Can be used to lookup status
-        /// Status : InProgress
-        /// Success : 
-        /// Errors : 
+        /// Creates a simple claim and checks the result.
         /// </summary>
+        /// <returns>
+        /// Returns a <see cref="ClaimOperationResults"/> object with the following properties:
+        /// - ID: 0 (Can be used to look up the status)
+        /// - Status: InProgress
+        /// - Success: The success status of the operation
+        /// - Errors: Any errors encountered during the operation
+        /// </returns>
         [TestMethod]
         public void CreateClaimSimple() {
 
@@ -87,16 +92,18 @@ namespace InkassoServiceTest {
 
 
         /// <summary>
-        /// Description: Check the status of claim/s creation.
-        /// Input: Id returned from CreateClaimSimple()
-        /// Output: ClaimOperationReults()  
-        /// ID : 0 // Can be used to lookup status
-        /// Status : InProgress
-        /// Success : 
-        /// Errors : 
+        /// Checks the status of a claim creation.
         /// </summary>
+        /// <param name="claimId">The ID returned from <see cref="CreateClaimSimple"/>.</param>
+        /// <returns>
+        /// Returns a <see cref="ClaimOperationResults"/> object with the following properties:
+        /// - ID: 0 (Can be used to look up the status)
+        /// - Status: InProgress
+        /// - Success: The success status of the operation
+        /// - Errors: Any errors encountered during the operation
+        /// </returns>
         [TestMethod]
-        public void CheckStatus() {
+        public void CheckClaimStatus() {
 
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -123,17 +130,19 @@ namespace InkassoServiceTest {
         }
 
         /// <summary>
-        /// Description: Query claim status and information
-        /// Input: BankClaimKey() {
-        ///     Account = AccountNr,
-        ///     ClaimantId = ClaimantID,
-        ///     DueDate = DueDate
-        /// }
-        /// Output: ClaimInfo()  
-        /// ClaimId : String
-        /// ClaimStatus : Paid, Unpaid, Cancelled, InProgress
-        /// ClaimAmount : Decimal
+        /// Queries the status and information of a claim.
         /// </summary>
+        /// <param name="claimKey">The key identifying the claim, including:
+        /// - Account: The account number (AccountNr)
+        /// - ClaimantId: The claimant's ID (ClaimantID)
+        /// - DueDate: The due date of the claim (DueDate)
+        /// </param>
+        /// <returns>
+        /// Returns a <see cref="ClaimInfo"/> object with the following properties:
+        /// - ClaimId: The unique identifier for the claim (String)
+        /// - ClaimStatus: The status of the claim, which can be Paid, Unpaid, Cancelled, or InProgress
+        /// - ClaimAmount: The amount associated with the claim (Decimal)
+        /// </returns>
         [TestMethod]
         public void QueryClaim() {
             ServicePointManager.Expect100Continue = true;
@@ -166,21 +175,23 @@ namespace InkassoServiceTest {
         }
 
         /// <summary>
-        /// Description: Query payments.
-        /// Input: PaymentsQuery() {
-        ///     Claimant = String ssn
-        ///     TransactionDateFrom = DateTime
-        ///     TransactionDateTo = DateTime
-        ///     EntryFromSpecified = false
-        ///     EntryToSpecified = false
-        ///     EntryFrom = 1,
-        ///     EntryTo = 50
-        /// }
-        /// Output: QueryPaymentResult[]  
-        /// PaymentId : int
-        /// Success : Bool
-        /// Message : "Payment processed successfully"  
+        /// Queries payments on claims based on specified criteria.
         /// </summary>
+        /// <param name="paymentsQuery">The query parameters including:
+        /// - Claimant: Social Security Number (SSN) as a string
+        /// - TransactionDateFrom: Start date for transaction filtering (DateTime)
+        /// - TransactionDateTo: End date for transaction filtering (DateTime)
+        /// - EntryFromSpecified: Indicates whether EntryFrom is specified (bool)
+        /// - EntryToSpecified: Indicates whether EntryTo is specified (bool)
+        /// - EntryFrom: Starting entry index (int)
+        /// - EntryTo: Ending entry index (int)
+        /// </param>
+        /// <returns>
+        /// Returns an array of <see cref="QueryPaymentResult"/> objects with the following properties:
+        /// - PaymentId: The unique identifier for the payment (int)
+        /// - Success: A boolean indicating whether the payment was processed successfully
+        /// - Message: A message describing the payment processing status ("Payment processed successfully")
+        /// </returns>
         [TestMethod]
         public void QueryPayments() {
 
@@ -219,14 +230,16 @@ namespace InkassoServiceTest {
         }
 
         /// <summary>
-        /// Description: Creates claim with Invoice.
-        /// Input: Claim()
-        /// Output: ClaimOperationReults()  
-        /// ID : 0 // Can be used to lookup status
-        /// Status : InProgress
-        /// Success : 
-        /// Errors : 
+        /// Creates a claim with an attached invoice and checks the operation results.
         /// </summary>
+        /// <param name="claim">The claim information, including details of the invoice.</param>
+        /// <returns>
+        /// Returns a <see cref="ClaimOperationResults"/> object with the following properties:
+        /// - ID: A unique identifier (int) that can be used to look up the status
+        /// - Status: The current status of the operation ("InProgress")
+        /// - Success: A boolean indicating the success of the operation
+        /// - Errors: Any error messages or details related to the operation
+        /// </returns>
         [TestMethod]
         public void CreateClaimWithInvoice() {
 
