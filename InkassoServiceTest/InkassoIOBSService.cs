@@ -377,6 +377,67 @@ namespace InkassoServiceTest {
             Debug.WriteLine("Test Finished: " + Environment.NewLine + builder.ToString());
             Debugger.Break();
         }
+
+        [TestMethod]
+        public void QueryClaims() {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            var client = new IOBS_serv_DEMO.IcelandicOnlineBankingClaimsSoapClient();
+
+            client.ClientCredentials.UserName.UserName = UserName;
+            client.ClientCredentials.UserName.Password = Password;
+
+            ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(InkassoTools.ValidateServerCertificate);
+
+            //var query = new IOBS_serv_DEMO.ClaimsQuery() {
+            //    Claimant = "0101307789",
+            //    Identifier = "0TE",
+            //    Period = new IOBS_serv_DEMO.ClaimsQueryDateSpan {
+            //        DateFrom = new DateTime(2023, 12, 09),
+            //        DateFromSpecified = true,
+            //        DateTo = new DateTime(2023, 12, 22),
+            //        DateToSpecified = true,
+            //        DateSpanReferenceDate = 0,
+            //        DateSpanReferenceDateSpecified = false
+            //    },
+            //    Payor = "0101302399",
+            //    Status = IOBS_serv_DEMO.ClaimStatus.Cancelled,
+            //    StatusSpecified = true,
+            //    EntryFrom = 1,
+            //    EntryFromSpecified = true,
+            //    EntryTo = 500,
+            //    EntryToSpecified = true
+            //};
+
+            var query = new IOBS_serv_DEMO.ClaimsQuery() {
+                Claimant = "0101307789",
+                Period = new IOBS_serv_DEMO.ClaimsQueryDateSpan {
+                    DateFrom = DateTime.Now.AddYears(-1),
+                    DateFromSpecified = true,
+                    DateTo = DateTime.Now.AddDays(-1),
+                    DateToSpecified = true,
+                    DateSpanReferenceDate = 0,
+                    DateSpanReferenceDateSpecified = false
+                },
+                StatusSpecified = false,
+                EntryFromSpecified = false,
+                EntryToSpecified = false
+            };
+
+            var result = client.QueryClaims(query);
+
+            var builder = new StringBuilder();
+            var t = result.GetType();
+            var pi = t.GetProperties();
+
+            foreach (PropertyInfo p in pi) {
+                builder.AppendLine(p.Name + " : " + p.GetValue(result));
+            }
+            Debug.WriteLine("Test Finished: " + Environment.NewLine + builder.ToString());
+            Debugger.Break();
+        }
+
     }
 }
 
