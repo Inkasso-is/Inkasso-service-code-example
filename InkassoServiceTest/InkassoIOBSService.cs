@@ -14,8 +14,8 @@ namespace InkassoServiceTest {
     [TestClass]
     public class InkassoIOBSService {
 
-        public string UserName = "test.inkasso";
-        public string Password = "$ILove2Code";
+        public string UserName = "inkasso.dadi";
+        public string Password = "ZiK289dt";
 
         /// <summary>
         /// Creates a simple claim and checks the result.
@@ -34,10 +34,10 @@ namespace InkassoServiceTest {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             // account: 0900-66-000006
-            string Account = "090066000007";
-            string ClaimantID = "0101307789";
-            string PayorID = "0101305069";
-            string Identifier = "0TE";
+            string Account = "030166133474";
+            string ClaimantID = "5110932019";
+            string PayorID = "6304130360";
+            string Identifier = "037";
             string Reference = Account.PadLeft(6);
             string BillNumber = Account.PadLeft(6);
             Decimal Amount = 500;
@@ -50,6 +50,7 @@ namespace InkassoServiceTest {
 
             client.ClientCredentials.UserName.UserName = UserName;
             client.ClientCredentials.UserName.Password = Password;
+            client.Endpoint.EndpointBehaviors.Add(new SoapEndpointBehavior());
 
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(InkassoTools.ValidateServerCertificate);
 
@@ -77,17 +78,26 @@ namespace InkassoServiceTest {
                 CurrencyInformation = null,
                 PermitOutOfSequencePayment = false
             };
-            var result = client.CreateClaim(claim);
+            try
+            {
+                var result = client.CreateClaim(claim);
 
-            var builder = new StringBuilder();
-            var t = result.GetType();
-            var pi = t.GetProperties();
+                var builder = new StringBuilder();
+                var t = result.GetType();
+                var pi = t.GetProperties();
 
-            foreach (PropertyInfo p in pi) {
-                builder.AppendLine(p.Name + " : " + p.GetValue(result));
+                foreach (PropertyInfo p in pi)
+                {
+                    builder.AppendLine(p.Name + " : " + p.GetValue(result));
+                }
+                Debug.WriteLine("Test Finished: " + Environment.NewLine + builder.ToString());
+                Debugger.Break();
             }
-            Debug.WriteLine("Test Finished: " + Environment.NewLine + builder.ToString());
-            Debugger.Break();
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error during claim creation: " + ex.Message);
+                Debugger.Break();
+            }
         }
 
 
@@ -153,12 +163,12 @@ namespace InkassoServiceTest {
             client.ClientCredentials.UserName.UserName = UserName;
             client.ClientCredentials.UserName.Password = Password;
 
-            ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(InkassoTools.ValidateServerCertificate);
+            //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(InkassoTools.ValidateServerCertificate);
 
             var wsKey = new IOBS_serv_DEMO.ClaimKey() {
-                Account = "090066100420",
-                ClaimantID = "0101307789",
-                DueDate = new DateTime(2023, 9, 10)
+                Account = "030166000001",
+                ClaimantID = "4102050760",
+                DueDate = new DateTime(2022, 1, 3)
             };
 
             var result = client.QueryClaim(wsKey);
@@ -247,14 +257,14 @@ namespace InkassoServiceTest {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             // account: 0900-66-000006
-            string Account = "090066000007";
-            string ClaimantID = "0101307789";
-            string PayorID = "0101305069";
-            string Identifier = "0TE";
+            string Account = "030166000005";
+            string ClaimantID = "0902773919";
+            string PayorID = "6304130360";
+            string Identifier = "037";
             string Reference = Account.PadLeft(6);
             string BillNumber = Account.PadLeft(6);
-            Decimal Amount = 500;
-            string CustomerNumber = "0101305069";
+            Decimal Amount = 1;
+            string CustomerNumber = "6304130360";
             DateTime DueDate = DateTime.Now.AddDays(5);
             DateTime FinalDueDate = DueDate.AddDays(25);
             DateTime CancellationDate = DueDate.AddYears(4);
@@ -339,7 +349,9 @@ namespace InkassoServiceTest {
                 "<cbc:PriceAmount currencyID=\"ISK\">5000</cbc:PriceAmount></cac:Price>" +
                 "</cac:InvoiceLine></Invoice>";
 
-            var claim = new IOBS_serv_DEMO.Claim() {
+            IOBS_serv_DEMO.Claim[] claims = new IOBS_serv_DEMO.Claim[]
+                {
+                    new IOBS_serv_DEMO.Claim() {
                 Key = new IOBS_serv_DEMO.ClaimKey {
                     Account = Account,
                     ClaimantID = ClaimantID,
@@ -362,10 +374,11 @@ namespace InkassoServiceTest {
                 DefaultInterest = null,
                 CurrencyInformation = null,
                 PermitOutOfSequencePayment = false,
-                BillPresentmentSystem = new IOBS_serv_DEMO.BillPresentmentSystem { Type = null, Parameters = xmlInvoice }
-            };
+                BillPresentmentSystem = null//new IOBS_serv_DEMO.BillPresentmentSystem { Type = null, Parameters = xmlInvoice }
+                    }
+                };
 
-            var result = client.CreateClaim(claim);
+            var result = client.CreateClaims(claims);
 
             var builder = new StringBuilder();
             var t = result.GetType();

@@ -184,7 +184,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsdl:import namespace="http://IcelandicOnlineBanking/2005/12/01/Claims" location="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?wsdl=wsdl0" />
+  <wsdl:import namespace="http://IcelandicOnlineBanking/2005/12/01/Claims" location="https://secure.inkasso.is/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:binding name="MS" type="i0:IIcelandicOnlineBankingClaimsSoap">
     <wsp:PolicyReference URI="#MS_policy">
@@ -378,15 +378,15 @@
   </wsdl:binding>
   <wsdl:service name="IcelandicOnlineBankingClaimsSoap">
     <wsdl:port name="MS" binding="tns:MS">
-      <soap12:address location="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc" />
+      <soap12:address location="https://secure.inkasso.is/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc" />
       <wsa10:EndpointReference>
-        <wsa10:Address>https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc</wsa10:Address>
+        <wsa10:Address>https://secure.inkasso.is/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="MSNSC" binding="tns:MSNSC">
-      <soap12:address location="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc/NoSc" />
+      <soap12:address location="https://secure.inkasso.is/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc/NoSc" />
       <wsa10:EndpointReference>
-        <wsa10:Address>https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc/NoSc</wsa10:Address>
+        <wsa10:Address>https://secure.inkasso.is/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc/NoSc</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

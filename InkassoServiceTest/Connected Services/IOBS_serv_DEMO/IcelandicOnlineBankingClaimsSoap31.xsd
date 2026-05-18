@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://IcelandicOnlineBanking/2005/12/01/Claims" elementFormDefault="qualified" targetNamespace="http://IcelandicOnlineBanking/2005/12/01/Claims" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://demo-inkasso.azurewebsites.net/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?xsd=xsd1" namespace="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" />
+  <xs:import schemaLocation="https://secure.inkasso.is/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc?xsd=xsd1" namespace="http://IcelandicOnlineBanking/2005/12/01/ClaimTypes" />
   <xs:element name="CreateClaims">
     <xs:complexType>
       <xs:sequence>

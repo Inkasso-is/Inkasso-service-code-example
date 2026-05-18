@@ -30,4 +30,7 @@ https://demo-inkasso.azurewebsites.net/Account/LogOn
 - AddFinalPayment() https://github.com/Inkasso-is/Inkasso-service-code-example/blob/358458cc396d901530d97830a8ef348c3f6843af/InkassoServiceTest/InkassoBasicService.cs#L253-L304
 - SetPostponeDate() https://github.com/Inkasso-is/Inkasso-service-code-example/blob/358458cc396d901530d97830a8ef348c3f6843af/InkassoServiceTest/InkassoBasicService.cs#L306-L348
 
+### Raw Soap Client
+Project where we generate the raw xml to communicate with our IOBS webservice
+
 
