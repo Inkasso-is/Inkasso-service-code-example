@@ -23,7 +23,7 @@ namespace InkassoMiddleware
         // For Docker: http://host.docker.internal:5284/mock-inkasso
         // Example: Environment.SetEnvironmentVariable("INKASSO_URL", "http://localhost:5284/mock-inkasso");
         private static readonly string SoapEndpoint = Environment.GetEnvironmentVariable("INKASSO_URL") ??
-            "https://localhost:44354/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc/NoSc";
+            "https://secure.inkasso.is/SOAP/IOBS/IcelandicOnlineBankingClaimsSoap.svc/NoSc";
         
         // JSON endpoint for direct mock data (bypasses SOAP parsing)
         private static readonly string JsonMockEndpoint = "http://localhost:5284/mock-inkasso-json";
